@@ -1,5 +1,5 @@
-param name string = 'saiygiuyg123'
-param location string = 'uksouth'
+param name string
+param location string = 'ukwest'
 
 @allowed([
   'Standard_LRS'
@@ -18,5 +18,6 @@ resource name_resource 'Microsoft.Storage/storageAccounts@2021-02-01' = {
   properties: {
     accessTier: 'Hot'
     supportsHttpsTrafficOnly: true
+    allowBlobPublicAccess: false
   }
 }

@@ -4,18 +4,17 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.15.31.15270",
-      "templateHash": "5123733705762290288"
+      "version": "0.14.85.62628",
+      "templateHash": "13845762950619061265"
     }
   },
   "parameters": {
     "name": {
-      "type": "string",
-      "defaultValue": "saiygiuyg123"
+      "type": "string"
     },
     "location": {
       "type": "string",
-      "defaultValue": "uksouth"
+      "defaultValue": "ukwest"
     },
     "sku_name": {
       "type": "string",
@@ -39,7 +38,8 @@
       },
       "properties": {
         "accessTier": "Hot",
-        "supportsHttpsTrafficOnly": true
+        "supportsHttpsTrafficOnly": true,
+        "allowBlobPublicAccess": false
       }
     }
   ]
