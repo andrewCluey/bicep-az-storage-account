@@ -10,7 +10,8 @@
   },
   "parameters": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "defaultValue": "sadevukw8y9"
     },
     "location": {
       "type": "string",
