@@ -24,8 +24,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: ARM Template Toolkit (ARM TTK)
-      # You may pin to the exact commit or the version.
-      # uses: aliencube/arm-ttk-actions@6fa8c0ad67d034f6e274d5276fb492f7d263ae4a
+      id: testARM
       uses: aliencube/arm-ttk-actions@v0.3
       with:
         # ARM Template file path to run the test. It can be either a directory or single file.
@@ -35,7 +34,7 @@ jobs:
       shell: bash
       continue-on-error: false
       run: |
-        echo "${{ toJSON(fromJSON(steps.filestest.outputs.results)) }}"
+        echo "${{ toJSON(fromJSON(steps.testARM.outputs.results)) }}"
         
     - name: Checkov GitHub Action
       # You may pin to the exact commit or the version.
