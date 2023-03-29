@@ -5,17 +5,19 @@
     "_generator": {
       "name": "bicep",
       "version": "0.14.85.62628",
-      "templateHash": "13845762950619061265"
+      "templateHash": "605430763514210940"
     }
   },
   "parameters": {
     "name": {
-      "type": "string",
-      "defaultValue": "sadevukw8y9"
+      "type": "string"
     },
     "location": {
       "type": "string",
       "defaultValue": "ukwest"
+    },
+    "tags": {
+      "type": "object"
     },
     "sku_name": {
       "type": "string",
@@ -34,6 +36,7 @@
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "kind": "StorageV2",
+      "tags": "[parameters('tags')]",
       "sku": {
         "name": "[parameters('sku_name')]"
       },
