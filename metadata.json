@@ -1,0 +1,5 @@
+{
+    "itemDisplayName": "Azure Storage Account",
+    "description": "Deploy a basic example of an Azure Storage Account (v2).",
+    "summary": "Deploys a Simple Azure Storage Account."
+}
