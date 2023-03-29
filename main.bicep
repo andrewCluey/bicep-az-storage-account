@@ -1,5 +1,6 @@
 param name string
 param location string = 'ukwest'
+param tags object
 
 @allowed([
   'Standard_LRS'
@@ -12,6 +13,7 @@ resource name_resource 'Microsoft.Storage/storageAccounts@2021-02-01' = {
   name: name
   location: location
   kind: 'StorageV2'
+  tags: tags
   sku: {
     name: sku_name
   }
