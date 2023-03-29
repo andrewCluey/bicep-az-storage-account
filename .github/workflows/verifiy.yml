@@ -40,14 +40,14 @@ jobs:
       # You may pin to the exact commit or the version.
       uses: bridgecrewio/checkov-action@v12.1347.0
       #with:
-           # comma separated list of external (custom) checks directories
-        #external_checks_dirs: # optional
            # comma separated list of external (custom) checks repositories
         #external_checks_repos: # optional
 
 
-
+    #######
     # Login to Azure and publish bicep to private registry (ACR).
+    #######
+
     #- name: Azure Login
     #  uses: azure/login@v1
     #  with:
@@ -58,4 +58,4 @@ jobs:
     #  with:
     #    azcliversion: 2.30.0
     #    inlineScript: |
-    #      az account show
+    #      az bicep publish --file main.bicep --target "br:{registry}/{module_path}:{tag}" --documentationUri ${{  }}
