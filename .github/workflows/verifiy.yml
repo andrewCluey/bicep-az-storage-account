@@ -23,6 +23,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Run ARM-TTK with reviewdog
+      uses: microsoft/action-armttk@v1
+
     - name: ARM Template Toolkit (ARM TTK)
       # You may pin to the exact commit or the version.
       # uses: aliencube/arm-ttk-actions@6fa8c0ad67d034f6e274d5276fb492f7d263ae4a
