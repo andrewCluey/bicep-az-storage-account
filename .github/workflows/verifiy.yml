@@ -29,14 +29,7 @@ jobs:
       uses: aliencube/arm-ttk-actions@v0.3
       with:
         # ARM Template file path to run the test. It can be either a directory or single file.
-        path: 
-        # ARM template files to run the test, delimited by comma.
-        files: # optional
-        # Tests to run, delimited by comma. If omitted, all tests will be run.
-        tests: # optional
-        # Tests to skip, delimited by comma. If omitted, no test will be excluded.
-        skips: # optional
-
+        path: ./main.json
         
     - name: Checkov GitHub Action
       # You may pin to the exact commit or the version.
