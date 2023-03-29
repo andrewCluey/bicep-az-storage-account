@@ -1,0 +1,60 @@
+name: 'ARM'
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  arm:
+    name: 'arm template checks'
+    runs-on: ubuntu-latest
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Checkov GitHub Action
+      # You may pin to the exact commit or the version.
+      uses: bridgecrewio/checkov-action@v12.1347.0
+      with:
+           # comma separated list of external (custom) checks directories
+        #external_checks_dirs: # optional
+           # comma separated list of external (custom) checks repositories
+        #external_checks_repos: # optional
+
+    - name: ARM Template Toolkit (ARM TTK)
+      # You may pin to the exact commit or the version.
+      # uses: aliencube/arm-ttk-actions@6fa8c0ad67d034f6e274d5276fb492f7d263ae4a
+      uses: aliencube/arm-ttk-actions@v0.3
+      with:
+        # ARM Template file path to run the test. It can be either a directory or single file.
+        path: 
+        # ARM template files to run the test, delimited by comma.
+        files: # optional
+        # Tests to run, delimited by comma. If omitted, all tests will be run.
+        tests: # optional
+        # Tests to skip, delimited by comma. If omitted, no test will be excluded.
+        skips: # optional
+
+    # Login to Azure and publish bicep to private registry (ACR).
+    #- name: Azure Login
+    #  uses: azure/login@v1
+    #  with:
+    #    creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    #- name: Azure CLI script
+    #  uses: azure/CLI@v1
+    #  with:
+    #    azcliversion: 2.30.0
+    #    inlineScript: |
+    #      az account show
