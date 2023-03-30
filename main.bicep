@@ -1,6 +1,8 @@
 param name string
-param location string = 'ukwest'
-param tags object
+param location string = 'uksouth'
+param tags object = {}
+param private_endpoint_blob_name string
+param subnet_id string
 
 @allowed([
   'Standard_LRS'
@@ -9,7 +11,8 @@ param tags object
 ])
 param sku_name string = 'Standard_LRS'
 
-resource name_resource 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+
+resource storage_account 'Microsoft.Storage/storageAccounts@2021-02-01' = {
   name: name
   location: location
   kind: 'StorageV2'
@@ -21,5 +24,33 @@ resource name_resource 'Microsoft.Storage/storageAccounts@2021-02-01' = {
     accessTier: 'Hot'
     supportsHttpsTrafficOnly: true
     allowBlobPublicAccess: false
+  }
+}
+
+
+resource private_endpoint_blob 'Microsoft.Network/privateEndpoints@2022-01-01' = {
+  name: private_endpoint_blob_name
+  location: location
+  tags: tags
+  properties: {
+    privateLinkServiceConnections: [
+      { 
+        name: private_endpoint_blob_name
+        properties: {
+          groupIds: [
+            'blob'
+          ]
+          privateLinkServiceId: storage_account.id
+          privateLinkServiceConnectionState: {
+            status: 'Approved'
+            description: 'Auto-Approved'
+            actionsRequired: 'None'
+          }
+        }
+      }
+    ]
+    subnet: {
+      id: subnet_id
+    }
   }
 }
