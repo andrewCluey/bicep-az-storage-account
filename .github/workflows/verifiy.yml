@@ -26,7 +26,7 @@ jobs:
       uses: aliencube/arm-ttk-actions@v0.3
       with:
         # ARM Template file path to run the test. It can be either a directory or single file.
-        path: ./main.bicep
+        path: ./main.json
 
     - name: Test result - files
       shell: bash
