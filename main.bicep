@@ -12,7 +12,7 @@ param subnet_id string
 param sku_name string = 'Standard_LRS'
 
 
-resource storage_account 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+resource storage_account 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   name: name
   location: location
   kind: 'StorageV2'
