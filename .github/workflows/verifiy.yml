@@ -28,7 +28,7 @@ jobs:
 
     - name: ARM TTK scan
       id: ARM_TTK
-      uses: microsoft/action-armttk/.github/workflows/arm-ttk@0.0.5
+      uses: microsoft/action-armttk@v1
       with: 
         bicepFile: main.bicep
         workingPath: .
