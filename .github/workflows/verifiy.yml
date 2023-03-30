@@ -71,4 +71,4 @@ jobs:
     #  with:
     #    azcliversion: 2.30.0
     #    inlineScript: |
-    #      az bicep publish --file main.bicep --target "br:{registry}/{module_path}:{tag}" --documentationUri ${{  }}
+    #      az bicep publish --file main.bicep --target br:$registry/module/path:${{ steps.tag_version.outputs.new_tag }}
