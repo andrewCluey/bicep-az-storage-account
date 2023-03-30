@@ -11,3 +11,7 @@ dev bicep module for simple storage account
 | fix:   | patch (1.0.1)  |
 | feat:  | Minor (1.1.1)  |
 | perf:  | Major (2.0.0)  |
+
+example:
+`git commit -a -m "feat: minor change to bump the minor release by one"`
+
