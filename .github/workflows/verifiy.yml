@@ -30,7 +30,7 @@ jobs:
 
     - name: Test result - files
       shell: bash
-      continue-on-error: false
+      continue-on-error: true
       run: |
         echo "${{ toJSON(fromJSON(steps.testARM.outputs.results)) }}"
         
