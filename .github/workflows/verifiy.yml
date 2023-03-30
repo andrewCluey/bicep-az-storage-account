@@ -12,12 +12,10 @@ jobs:
   arm:
     name: 'arm template checks'
     runs-on: ubuntu-latest
-
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
         shell: bash
-
     steps:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
@@ -28,7 +26,7 @@ jobs:
       uses: aliencube/arm-ttk-actions@v0.3
       with:
         # ARM Template file path to run the test. It can be either a directory or single file.
-        path: ./main.json
+        path: ./main.bicep
 
     - name: Test result - files
       shell: bash
