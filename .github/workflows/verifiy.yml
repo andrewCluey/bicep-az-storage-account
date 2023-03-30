@@ -10,8 +10,6 @@ jobs:
   verify:
     name: 'arm template verification'
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu, macos, or windows
     defaults:
       run:
@@ -46,6 +44,8 @@ jobs:
   release:
     name: 'Release new version'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     needs: verify
     if: github.ref == 'refs/heads/main'
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu, macos, or windows
