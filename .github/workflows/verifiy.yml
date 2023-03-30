@@ -19,22 +19,29 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: ARM Template Toolkit (ARM TTK)
-      id: testARM
-      uses: aliencube/arm-ttk-actions@v0.3
-      with:
+    #- name: ARM Template Toolkit (ARM TTK)
+    #  id: testARM
+    #  uses: aliencube/arm-ttk-actions@v0.3
+    #  with:
         # ARM Template file path to run the test. It can be either a directory or single file.
-        path: ./main.json
+    #    path: ./main.json
 
-    - name: ARM TTK result
-      shell: bash
-      continue-on-error: true   # consider changing this to false for strict enforcement of best practice.
-      run: |
-        echo "${{ toJSON(fromJSON(steps.testARM.outputs.results)) }}"
+    - name: ARM TTK scan
+      id: ARM_TTK
+      uses: microsoft/action-armttk/.github/workflows/arm-ttk@1.0.0
+      with: 
+        bicepFile: main.bicep
+        workingPath: .
         
-    #- name: Checkov validation
+    #- name: ARM TTK result
+    #  shell: bash
+    #  continue-on-error: true   # consider changing this to false for strict enforcement of best practice.
+    #  run: |
+    #    echo "${{ toJSON(fromJSON(steps.testARM.outputs.results)) }}"
+        
+    - name: Checkov validation
       # You may pin to the exact commit or the version.
-    #  uses: bridgecrewio/checkov-action@v12.1347.0
+      uses: bridgecrewio/checkov-action@v12.1347.0
       #with:
         #external_checks_repos:    # Optional! comma separated list of external (custom) checks repositories
 
