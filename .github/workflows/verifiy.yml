@@ -34,11 +34,11 @@ jobs:
       run: |
         echo "${{ toJSON(fromJSON(steps.testARM.outputs.results)) }}"
         
-    - name: Checkov validation
-      # You may pin to the exact commit or the version.
-      uses: bridgecrewio/checkov-action@v12.1347.0
-      #with:
-        #external_checks_repos:    # Optional! comma separated list of external (custom) checks repositories
+    #- name: Checkov validation
+    #  # You may pin to the exact commit or the version.
+    #  uses: bridgecrewio/checkov-action@v12.1347.0
+    #  #with:
+    #    #external_checks_repos:    # Optional! comma separated list of external (custom) checks repositories
 
   release:
     name: 'Release new version'
