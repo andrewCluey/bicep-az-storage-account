@@ -1,10 +1,12 @@
-name: 'ARM'
+name: 'ARM Validation'
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
 
+permissions:
+  contents: read
 
 jobs:
   verify:
@@ -19,25 +21,19 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    #- name: ARM Template Toolkit (ARM TTK)
-    #  id: testARM
-    #  uses: aliencube/arm-ttk-actions@v0.3
-    #  with:
+    - name: ARM Template Toolkit (ARM TTK)
+      id: testARM
+      uses: aliencube/arm-ttk-actions@v0.3
+      with:
         # ARM Template file path to run the test. It can be either a directory or single file.
-    #    path: ./main.json
+        path: ./main.json
 
-    - name: ARM TTK scan
-      id: ARM_TTK
-      uses: microsoft/action-armttk@v1
-      with: 
-        bicepFile: main.bicep
-        workingPath: .
         
-    #- name: ARM TTK result
-    #  shell: bash
-    #  continue-on-error: true   # consider changing this to false for strict enforcement of best practice.
-    #  run: |
-    #    echo "${{ toJSON(fromJSON(steps.testARM.outputs.results)) }}"
+    - name: ARM TTK result
+      shell: bash
+      continue-on-error: true   # consider changing this to false for strict enforcement of best practice.
+      run: |
+        echo "${{ toJSON(fromJSON(steps.testARM.outputs.results)) }}"
         
     - name: Checkov validation
       # You may pin to the exact commit or the version.
