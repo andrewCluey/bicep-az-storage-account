@@ -54,7 +54,8 @@ jobs:
       # You may pin to the exact commit or the version.
       uses: bridgecrewio/checkov-action@v12.1347.0
       with:
-        external_checks_dirs: policies/azure/2.0    # Optional! comma separated list of external (custom) checks repositories
+        external_checks_dirs: 
+          - policies/azure/2.0    # Optional! comma separated list of external (custom) checks repositories
 
     #- name: Pester test deployment
       
