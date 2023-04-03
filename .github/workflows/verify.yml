@@ -52,7 +52,7 @@ jobs:
         
     - name: Checkov validation
       # You may pin to the exact commit or the version.
-      uses: bridgecrewio/checkov-action@main
+      uses: bridgecrewio/checkov-action
       with:
         external_checks_dirs: policies/azure/2.0    # Optional! comma separated list of external (custom) checks repositories
 
