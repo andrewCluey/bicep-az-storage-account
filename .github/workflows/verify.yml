@@ -27,6 +27,15 @@ jobs:
         repository: andrewCluey/checkov-policy-cis
         path: 'policies'     # azure/2.0
 
+    - name: Show local directory
+      run: pwd
+
+    - name: list local directory
+      run: ls
+
+    - name: show local directory tree
+      run: tree 
+
     - name: ARM Template Toolkit (ARM TTK)
       id: testARM
       uses: aliencube/arm-ttk-actions@v0.3
