@@ -18,8 +18,14 @@ jobs:
         shell: bash
     steps:
     # Checkout the repository to the GitHub Actions runner
-    - name: Checkout
+    - name: Checkout Self
       uses: actions/checkout@v3
+
+    - name: Checkout checkov custom policies
+      uses: actions/checkout@v3
+      with:
+        repository: andrewCluey/checkov-policy-cis
+        path: 'policies'     # azure/2.0
 
     - name: ARM Template Toolkit (ARM TTK)
       id: testARM
@@ -38,8 +44,8 @@ jobs:
     - name: Checkov validation
       # You may pin to the exact commit or the version.
       uses: bridgecrewio/checkov-action@v12.1347.0
-      #with:
-        #external_checks_repos:    # Optional! comma separated list of external (custom) checks repositories
+      with:
+        external_checks_dirs: policies/azure/2.0    # Optional! comma separated list of external (custom) checks repositories
 
     #- name: Pester test deployment
       
