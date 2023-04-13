@@ -49,12 +49,20 @@ jobs:
       continue-on-error: true   # consider changing this to false for strict enforcement of best practice.
       run: |
         echo "${{ toJSON(fromJSON(steps.testARM.outputs.results)) }}"
+
+    - name: install checkov
+      shell: bash
+      run: pip3 install checkov
+
+    - name: run checkov
+      shell: bash
+      run: checkov -d . --external-checks-dir ./policies/azure/2.0
         
-    - name: Checkov validation
+    #- name: Checkov validation
       # You may pin to the exact commit or the version.
-      uses: bridgecrewio/checkov-action@v12.1347.0
-      with:
-        external_checks_dirs: ./policies/azure/2.0    # Optional! comma separated list of external (custom) checks repositories
+    #  uses: bridgecrewio/checkov-action@v12.1347.0
+    #  with:
+    #    external_checks_dirs: ./policies/azure/2.0    # Optional! comma separated list of external (custom) checks repositories
 
     #- name: Pester test deployment
       
