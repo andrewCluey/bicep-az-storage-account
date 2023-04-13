@@ -129,7 +129,7 @@ runs:
     - ${{ inputs.soft_fail }}
     - ${{ inputs.use_enforcement_rules }}
     - ${{ inputs.framework }}
-    #- ${{ inputs.external_checks_dirs }}
+    - ${{ inputs.external_checks_dirs }}
     - ${{ inputs.external_checks_repos }}
     - ${{ inputs.output_format }}
     - ${{ inputs.output_file_path }}
@@ -155,4 +155,4 @@ runs:
     BITBUCKET_TOKEN: ${{ inputs.bitbucket_token }}
     BITBUCKET_USERNAME: ${{ inputs.bitbucket_username }}
     BITBUCKET_APP_PASSWORD: ${{ inputs.bitbucket_app_password }}
-    EXTERNAL_CHECKS_DIR: ${{ inputs.external_checks_dirs }}
+    #EXTERNAL_CHECKS_DIR: ${{ inputs.external_checks_dirs }}
