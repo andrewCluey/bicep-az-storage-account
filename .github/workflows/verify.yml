@@ -52,7 +52,7 @@ jobs:
 
     - name: install checkov
       shell: bash
-      run: pip3 install checkov
+      run: sudo python3.10 -m pip install -U checkov
 
     - name: run checkov
       shell: bash
